@@ -15,4 +15,10 @@ defmodule RestApi.JSONUtils do
       |> Jason.Encoder.encode(options)
     end
   end
+
+  def normaliseMongoId(doc) do
+    doc
+    |>Map.put('id', doc["_id"])
+    |>Map.delete("_id")
+  end
 end
